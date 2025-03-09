@@ -195,25 +195,25 @@ namespace Services
         {
             if (tokenDto == null || string.IsNullOrEmpty(tokenDto.AccessToken) || string.IsNullOrEmpty(tokenDto.RefreshToken))
             {
-                throw new ArgumentNullException(nameof(tokenDto), "Token bilgileri eksik.");
+                throw new ArgumentNullException(nameof(tokenDto), "Token information is missing");
             }
 
             var principal = GetPrincipalFropExpiredToken(tokenDto.AccessToken);
             if (principal == null || principal.Identity == null || string.IsNullOrEmpty(principal.Identity.Name))
             {
-                throw new Exception("Geçersiz veya süresi dolmuş bir token.");
+                throw new Exception("Expired or invalid token");
             }
 
             var user = await _userManager.FindByNameAsync(principal.Identity.Name);
             if (user == null)
             {
-                throw new Exception("Kullanıcı bulunamadı.");
+                throw new Exception("User not found");
             }
 
             if (string.IsNullOrEmpty(user.RefreshToken) || user.RefreshToken != tokenDto.RefreshToken ||
                 user.ResfreshTokenExpiryTime <= DateTime.Now)
             {
-                throw new Exception("Geçersiz veya süresi dolmuş refresh token.");
+                throw new Exception("Expired or invalid refresh token");
             }
 
             _user = user;

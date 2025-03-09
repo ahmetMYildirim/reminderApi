@@ -16,11 +16,6 @@ namespace Repository.EFCore
             _context = reminderContext;
         }
 
-        /*public bool Any(Func<Users, bool> prdicate)
-        {
-            return _context.Users.Any(prdicate);
-        }*/
-
         public void CreateUser(Users users)
         {
             Create(users);

@@ -13,6 +13,5 @@ namespace Repository.Contracts.IRepos
         void UpdateUser(Users users);
         void DeleteUser(Users users);
         Users GetUserById(int id);
-        //bool Any(Func<Users, bool> prdicate);
     }
 }

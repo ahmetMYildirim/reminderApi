@@ -47,12 +47,6 @@ namespace Services
             return users;
         }
 
-       /* public bool IsUserValid(string username, string password)
-        {
-            bool userExits = _repositoryManager.userRepository.Any(u => u.username == username && u.password == password);
-            return userExits;
-        }*/
-
         public async Task UpdateUser(int id, Users user)
         {
             var existingUser = _repositoryManager.userRepository.GetUserById(id);

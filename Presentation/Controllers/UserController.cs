@@ -16,8 +16,6 @@ namespace Presentation.Controllers
     public class UserController : ControllerBase
     {
         private readonly IServiceManager _manager;
-        private readonly IUserService _userService;
-
         public UserController(IServiceManager manager)
         {
             _manager = manager;
